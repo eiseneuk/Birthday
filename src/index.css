@@ -1,0 +1,248 @@
+/* Basic bluish aesthetic styling */
+:root {
+  --bg-1: #071323;
+  --bg-2: #0b2940;
+  --card: rgba(255, 255, 255, 0.05);
+  --accent: #6fc3ff;
+  --accent-2: #3aa0ff;
+  --glass: rgba(255, 255, 255, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, Segoe UI, Roboto, "Helvetica Neue", Arial;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  color: #e6f8ff;
+  overflow: hidden;
+}
+
+.bg-stars {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.8;
+  mix-blend-mode: overlay;
+}
+
+.container {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 48px;
+}
+
+.card {
+  width: min(880px, 94vw);
+  max-width: 920px;
+  padding: 36px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+  color: rgba(230, 248, 255, 0.85);
+}
+
+.hint {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  color: #022032;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: inherit;
+}
+
+.message {
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.typing {
+  white-space: pre-wrap;
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 8px;
+  min-height: 220px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.final {
+  text-align: center;
+}
+
+.footer {
+  padding: 12px;
+  text-align: center;
+}
+
+.credit {
+  padding: 12px;
+  text-align: center;
+  color: rgba(230, 248, 255, 0.6);
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.confetti .piece {
+  position: absolute;
+  top: 10%;
+  width: 10px;
+  height: 18px;
+  opacity: 0.95;
+  border-radius: 2px;
+  animation: fall 2200ms linear forwards;
+}
+
+.confetti .p0  { left: 8%;  background: #9be7ff;  animation-delay: 0ms; }
+.confetti .p1  { left: 16%; background: #7fd1ff;  animation-delay: 80ms; }
+.confetti .p2  { left: 24%; background: #b6e9ff;  animation-delay: 160ms; }
+.confetti .p3  { left: 32%; background: #8fd8ff;  animation-delay: 240ms; }
+.confetti .p4  { left: 40%; background: #6fc3ff;  animation-delay: 320ms; }
+.confetti .p5  { left: 48%; background: #cfefff;  animation-delay: 400ms; }
+.confetti .p6  { left: 56%; background: #9be7ff;  animation-delay: 480ms; }
+.confetti .p7  { left: 64%; background: #7fd1ff;  animation-delay: 560ms; }
+.confetti .p8  { left: 72%; background: #b6e9ff;  animation-delay: 640ms; }
+.confetti .p9  { left: 80%; background: #8fd8ff;  animation-delay: 720ms; }
+.confetti .p10 { left: 12%; background: #6fc3ff;  animation-delay: 800ms; }
+.confetti .p11 { left: 20%; background: #cfefff;  animation-delay: 880ms; }
+.confetti .p12 { left: 28%; background: #9be7ff;  animation-delay: 960ms; }
+.confetti .p13 { left: 36%; background: #7fd1ff;  animation-delay: 1040ms; }
+.confetti .p14 { left: 44%; background: #b6e9ff;  animation-delay: 1120ms; }
+.confetti .p15 { left: 52%; background: #8fd8ff;  animation-delay: 1200ms; }
+.confetti .p16 { left: 60%; background: #6fc3ff;  animation-delay: 1280ms; }
+.confetti .p17 { left: 68%; background: #cfefff;  animation-delay: 1360ms; }
+.confetti .p18 { left: 76%; background: #9be7ff;  animation-delay: 1440ms; }
+.confetti .p19 { left: 84%; background: #7fd1ff;  animation-delay: 1520ms; }
+.confetti .p20 { left: 92%; background: #b6e9ff;  animation-delay: 1600ms; }
+.confetti .p21 { left: 6%;  background: #8fd8ff;  animation-delay: 1680ms; }
+.confetti .p22 { left: 86%; background: #6fc3ff;  animation-delay: 1760ms; }
+.confetti .p23 { left: 94%; background: #cfefff;  animation-delay: 1840ms; }
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0) translateX(0);
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg) translateX(40px);
+    opacity: 0;
+  }
+}
+
+/* YouTube iframe wrapper */
+.yt-wrap {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 320px;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.yt-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Audio-only YouTube embed: make the iframe tiny/hidden but keep it able to play audio */
+.yt-wrap.audio {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border: 0;
+  pointer-events: none;
+  background: transparent;
+}
+
+.yt-wrap.audio iframe {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  border: 0;
+  pointer-events: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .title {
+    font-size: 34px;
+  }
+  .yt-wrap {
+    display: none;
+  }
+  .card {
+    padding: 20px;
+  }
+}

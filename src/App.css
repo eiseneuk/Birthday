@@ -1,0 +1,269 @@
+:root{
+  /* Darker green palette */
+  --sap-1: #0b2e1f;   /* very dark top green */
+  --sap-2: #134d2f;   /* forest green */
+  --sap-3: #1d6b42;   /* rich emerald */
+  --sap-4: #238f56;   /* brighter leaf green */
+  --sap-5: #2fa76a;   /* button gradient start */
+  --sap-6: #145c36;   /* darkest green for text */
+  --card-bg: rgba(255,255,255,0.08);
+  --glass: rgba(255,255,255,0.06);
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color:var(--sap-6);
+  background:linear-gradient(180deg,var(--sap-1),var(--sap-2) 60%, var(--sap-3));
+}
+/* Forest silhouette background at the bottom */
+.app-root::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: url('./images/trees-silhouette.png') repeat-x bottom;
+  background-size: contain;
+  opacity: 0.85;
+  z-index: 1; /* behind cards and vines */
+}
+
+
+
+.app-root{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  padding:36px 16px;
+  background:linear-gradient(180deg,var(--sap-1),var(--sap-2) 55%, var(--sap-3));
+  color:var(--sap-6);
+}
+
+.english-text {
+  font-family: 'Lobster', cursive;
+}
+
+/* Vines background */
+.vines{position:absolute;left:0;right:0;top:0;height:42vh;pointer-events:none;z-index:3;overflow:visible}
+.vine{position:absolute;top:-6vh;width:14px;height:60vh;transform-origin:top center;}
+.vine::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;
+  transform:translateX(-50%);
+  width:8px;
+  height:100%;
+  border-radius:8px;
+  background:linear-gradient(to bottom,var(--sap-5),var(--sap-6));
+  box-shadow:0 4px 10px rgba(31,122,66,0.25);
+}
+
+/* positionings */
+.v1{left:4% ; animation:sway 5s ease-in-out infinite; animation-delay:0s}
+.v2{left:18%; animation:sway 6s ease-in-out infinite; animation-delay:0.6s}
+.v3{left:42%; animation:sway 5.5s ease-in-out infinite; animation-delay:0.3s}
+.v4{left:66%; animation:sway 6.5s ease-in-out infinite; animation-delay:0.9s}
+.v5{left:86%; animation:sway 5.2s ease-in-out infinite; animation-delay:0.2s}
+
+/* Leaves */
+.leaf{
+  position:absolute;
+  display:block;
+  width:36px;
+  height:20px;
+  background:var(--sap-4);
+  border-radius:24px;
+  transform-origin:left center;
+  box-shadow:0 3px 8px rgba(0,0,0,0.12);
+  animation:leaf 6s ease-in-out infinite;
+}
+.leaf::after{
+  content:'';
+  position:absolute;
+  left:40%;
+  top:2px;
+  width:2px;
+  height:14px;
+  background:rgba(255,255,255,0.2);
+  transform:rotate(12deg);
+  border-radius:2px;
+}
+
+/* leaf positions per vine */
+.v1 .l1{top:22%;left:-18px;transform:rotate(-22deg)}
+.v1 .l2{top:46%;left:-26px;transform:rotate(-8deg);width:44px}
+.v1 .l3{top:66%;left:-20px;transform:rotate(6deg)}
+
+.v2 .l1{top:30%;left:6px;transform:rotate(18deg)}
+.v2 .l2{top:58%;left:8px;transform:rotate(6deg)}
+
+.v3 .l1{top:14%;left:-22px;transform:rotate(-30deg)}
+.v3 .l2{top:44%;left:12px;transform:rotate(12deg);width:40px}
+.v3 .l3{top:74%;left:-18px;transform:rotate(-6deg)}
+
+.v4 .l1{top:24%;left:10px;transform:rotate(20deg)}
+.v4 .l2{top:56%;left:-20px;transform:rotate(-12deg)}
+
+.v5 .l1{top:40%;left:-14px;transform:rotate(0deg)}
+
+/* Animations */
+@keyframes leaf{
+  0%{transform:scale(1) rotate(var(--r,0deg))}
+  50%{transform:scale(1.03) rotate(calc(var(--r,0deg) + 6deg))}
+  100%{transform:scale(1) rotate(var(--r,0deg))}
+}
+@keyframes sway{
+  0%{transform:rotate(-6deg)}
+  50%{transform:rotate(6deg)}
+  100%{transform:rotate(-6deg)}
+}
+
+/* content container */
+.container{position:relative;z-index:2;max-width:860px;margin:3.6rem auto;padding:32px}
+.card{
+  background:var(--card-bg);
+  backdrop-filter: blur(6px);
+  border-radius:14px;
+  padding:28px;
+  margin-bottom:18px;
+  border:1px solid rgba(47,138,67,0.15);
+  box-shadow:0 10px 30px rgba(31,122,66,0.15);
+  color:var(--sap-6);
+}
+.card.landing{display:flex;flex-direction:column;align-items:center;text-align:center}
+.title{font-size:2rem;margin:6px 0 8px;color:var(--sap-6)}
+.subtitle{color:var(--sap-5);margin-bottom:14px}
+.hint{font-size:0.9rem;color:rgba(31,122,66,0.7);margin-top:12px}
+.controls{display:flex;gap:12px;margin-top:16px}
+
+.btn{
+  background:linear-gradient(180deg,var(--sap-5),var(--sap-4));
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow:0 6px 18px rgba(24,97,46,0.25);
+}
+.btn.ghost{background:transparent;color:var(--sap-6);border:1px solid rgba(31,122,66,0.25);box-shadow:none}
+.btn:active{transform:translateY(1px)}
+
+.typing{
+  white-space:pre-wrap;
+  line-height:1.6;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+  color:var(--sap-6);
+}
+
+/* Confetti - use green palette */
+.confetti{position:fixed;left:0;right:0;top:0;bottom:0;z-index:3;pointer-events:none}
+.confetti .piece{position:absolute;display:block;width:12px;height:8px;border-radius:2px;opacity:0.95}
+.p0 { background: #1e90ff; } /* DodgerBlue */
+.p1 { background: #0077cc; } /* Deep Blue */
+.p2 { background: var(--sap-3); } /* keep emerald */
+.p3 { background: var(--sap-6); } /* keep dark green */
+.p4 { background: #aee6b8; } /* light green accent */
+.p5 { background: #88d69b; } /* soft green accent */
+
+
+/* footer */
+.credit {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: rgba(31,122,66,0.85);
+  margin-top: 20px;
+}
+
+.card {
+  animation: fadeInUp 0.8s ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.confetti .piece {
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+.btn {
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+.btn:hover {
+  box-shadow: 0 0 12px rgba(47,167,106,0.6);
+}
+
+body {
+  background: linear-gradient(180deg,var(--sap-1),var(--sap-2) 60%, var(--sap-3));
+  background-size: 200% 200%;
+  animation: bgShift 12s ease infinite;
+}
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Make all English text blue */
+.english-text {
+  font-family: 'Lobster', cursive;
+  color: #1e90ff; /* DodgerBlue, you can pick another shade */
+}
+
+/* Bengali text inside cards, titles, subtitles, typing, etc. */
+.title,
+.subtitle,
+.typing,
+.card.final h2,
+.card.final p {
+  color: #1e90ff; /* same blue for consistency */
+}
+
+/* Optional: keep hints and footer blue too */
+.hint,
+.credit {
+  color: #1e90ff;
+}
+
+.btn {
+  background: linear-gradient(180deg, #1e90ff, #0077cc);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(30,144,255,0.25);
+}
+.btn:hover {
+  box-shadow: 0 0 12px rgba(30,144,255,0.6);
+}
+
+/* Forest silhouette background at the bottom */
+.app-root::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: url('./images/trees-silhouette.png') repeat-x bottom;
+  background-size: contain;
+  opacity: 0.85;
+  z-index: 1; /* behind cards and vines */
+}
